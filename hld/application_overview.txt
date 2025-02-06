@@ -1,0 +1,6 @@
+Objective:
+==========
+Create a banking application having the following function(s).
+
+- Account (Create, Update, Delete)
+- Balance (Deposit, Display, Withdraw)

@@ -1,0 +1,44 @@
+CLI application based on Python.
+================================
+Tech Stack
+
+Frameworks:
+___________
+DB: Sqlite3 & pydantic
+CLI: Typer
+
+
+Architecture:
+
+app.py:
+-------
+main()
+
+classes/account.py:
+-------------------
+Account class
+    Variables
+    - username
+    - acc_type
+    - address
+    - branch
+    - acc_id
+    Methods
+    - create()/ __init__()
+    - update()
+    - delete()
+
+classes/balance.py:
+-------------------
+Balance class
+    Variables
+    - bal_amt
+    - amt_cr
+    - amt_db
+    Methods
+    - deposit()
+    - display_balance()
+    - withdraw()
+
+db/models/account_db.py
+         /balance_db.py
