@@ -1,16 +1,25 @@
-
+from src.db.models.balance_db import BalanceDB
 
 class Balance:
-    def __init__(self, balance_amt = 0):
-        self.balance_amt = balance_amt
+    def __init__(self, acc_id):
+        self.acc_id = acc_id
 
-    def deposit(self, deposit_amt):
-        self.balance_amt += deposit_amt  # balance_amt = balance_amt + deposit_amt
-
-    def withdraw(self, withdrawal_amt):
-        if withdrawal_amt > self.balance_amt:
-            print("Insufficient balance")
-        self.balance_amt -= withdrawal_amt  # balance_amt = balance_amt - withdrawal_amt
+    def deposit(self, amount):
+        """Deposit an amount to the balance"""
+        if amount <= 0:
+            return False
+        BalanceDB.update_balance(self.acc_id, amount)
+        return True
 
     def display_balance(self):
-        print(f"Current balance: {self.balance_amt}")
+        return BalanceDB.get_balance(self.acc_id)
+
+    def withdraw(self, amount):
+        """Withdraw an amount from the balance"""
+        if amount <= 0:
+            return False
+        current_balance = self.display_balance()
+        if current_balance >= amount:
+            BalanceDB.update_balance(self.acc_id, -amount)  # Use negative amount for withdrawal
+            return True
+        return False
